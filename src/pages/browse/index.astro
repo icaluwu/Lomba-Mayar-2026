@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import CourseCard from '../../components/CourseCard.astro';
+
+export const prerender = true;
+
+const allCourses = [
+  {
+    title: 'Keperawatan Medikal Bedah',
+    description: 'Penanganan pasien medikal-bedah komprehensif, dari pre-op hingga post-op dan pengelolaan komplikasi.',
+    price: 299000,
+    originalPrice: 499000,
+    checkoutUrl: 'https://mayar.id/checkout/medikal-bedah',
+    badge: '🔥 Terlaris',
+    badgeType: 'popular' as const,
+    duration: '10 minggu',
+    level: 'Intermediate',
+    students: '500+',
+    category: 'kritis',
+    image: '/courses/medikal-bedah.png',
+  },
+  {
+    title: 'Keperawatan Gawat Darurat (KGD)',
+    description: 'Triage, resusitasi, dan manajemen kegawatdaruratan untuk kehidupan nyata di IGD.',
+    price: 249000,
+    originalPrice: 399000,
+    checkoutUrl: 'https://mayar.id/checkout/kgd',
+    badge: 'Baru',
+    badgeType: 'teal' as const,
+    duration: '8 minggu',
+    level: 'Advanced',
+    students: '300+',
+    category: 'kritis',
+    image: '/courses/kgd.png',
+  },
+  {
+    title: 'Keperawatan Maternitas',
+    description: 'Asuhan keperawatan ibu hamil, persalinan, nifas, dan bayi baru lahir berbasis EBP.',
+    price: 229000,
+    originalPrice: 349000,
+    checkoutUrl: 'https://mayar.id/checkout/maternitas',
+    badge: 'EBP',
+    badgeType: 'primary' as const,
+    duration: '8 minggu',
+    level: 'Semua Level',
+    students: '400+',
+    category: 'maternitas',
+    image: '/courses/maternitas.png',
+  },
+  {
+    title: 'Keperawatan Anak',
+    description: 'Asuhan keperawatan pediatri dari bayi baru lahir hingga remaja, termasuk kasus neonatal.',
+    price: 219000,
+    originalPrice: 329000,
+    checkoutUrl: 'https://mayar.id/checkout/anak',
+    badge: 'Pediatri',
+    badgeType: 'teal' as const,
+    duration: '7 minggu',
+    level: 'Intermediate',
+    students: '250+',
+    category: 'komunitas',
+    image: '/courses/anak.png',
+  },
+  {
+    title: 'Keperawatan Jiwa',
+    description: 'Asuhan keperawatan gangguan jiwa, teknik komunikasi terapeutik, dan MPKP.',
+    price: 199000,
+    originalPrice: 299000,
+    checkoutUrl: 'https://mayar.id/checkout/jiwa',
+    badge: 'Jiwa',
+    badgeType: 'primary' as const,
+    duration: '6 minggu',
+    level: 'Intermediate',
+    students: '180+',
+    category: 'komunitas',
+    image: '/courses/jiwa.png',
+  },
+  {
+    title: 'Keperawatan Komunitas & Keluarga',
+    description: 'Asuhan keperawatan komunitas, keluarga, dan promosi kesehatan berbasis evidence.',
+    price: 179000,
+    originalPrice: 279000,
+    checkoutUrl: 'https://mayar.id/checkout/komunitas',
+    badge: 'Komunitas',
+    badgeType: 'teal' as const,
+    duration: '6 minggu',
+    level: 'Semua Level',
+    students: '220+',
+    category: 'komunitas',
+    image: '/courses/komunitas.png',
+  },
+  {
+    title: 'ICU & Critical Care',
+    description: 'Manajemen pasien kritis di ICU: ventilator, monitoring invasif, dan early warning score.',
+    price: 349000,
+    originalPrice: 549000,
+    checkoutUrl: 'https://mayar.id/checkout/icu',
+    badge: '⭐ Premium',
+    badgeType: 'popular' as const,
+    duration: '12 minggu',
+    level: 'Advanced',
+    students: '150+',
+    category: 'kritis',
+    image: '/courses/icu.png',
+  },
+  {
+    title: 'Farmakologi untuk Perawat',
+    description: 'Prinsip farmakologi klinis, perhitungan dosis, dan interaksi obat yang wajib dikuasai Ners.',
+    price: 159000,
+    originalPrice: 229000,
+    checkoutUrl: 'https://mayar.id/checkout/farmakologi',
+    badge: 'Dasar',
+    badgeType: 'primary' as const,
+    duration: '5 minggu',
+    level: 'Dasar',
+    students: '600+',
+    category: 'dasar',
+    image: '/courses/farmakologi.png',
+  },
+  {
+    title: 'Persiapan UKMPPD Ners',
+    description: 'Paket latihan soal UKMPPD lengkap dengan pembahasan, strategi menjawab, dan simulasi ujian.',
+    price: 399000,
+    originalPrice: 599000,
+    checkoutUrl: 'https://mayar.id/checkout/ukmppd',
+    badge: '🎯 UKMPPD',
+    badgeType: 'popular' as const,
+    duration: '4 minggu',
+    level: 'Semua Level',
+    students: '800+',
+    category: 'ujian',
+    image: '/courses/ukmppd.png',
+  },
+];
+
+const categories = [
+  { id: 'all', label: 'Semua Kelas' },
+  { id: 'kritis', label: 'Keperawatan Kritis' },
+  { id: 'maternitas', label: 'Maternitas' },
+  { id: 'komunitas', label: 'Komunitas' },
+  { id: 'dasar', label: 'Dasar' },
+  { id: 'ujian', label: 'Persiapan Ujian' },
+];
+---
+
+<BaseLayout
+  title="Browse Kelas - KamusNers"
+  description="Jelajahi semua kelas keperawatan di KamusNers. Dari Medikal Bedah, KGD, Maternitas, ICU, hingga persiapan UKMPPD Ners."
+>
+  <Navbar slot="navbar" />
+  <Footer slot="footer" />
+  <WhatsAppButton slot="fab" />
+
+  <!-- Page Header -->
+  <section class="bg-primary-900 pt-28 pb-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="badge-teal mb-4 inline-block" data-aos="fade-up">📚 Katalog Kelas</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
+        Browse <span class="gradient-text">Semua Kelas</span>
+      </h1>
+      <p class="text-white/60 text-lg max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+        {allCourses.length} kelas keperawatan premium tersedia, dirancang oleh instruktur berpengalaman.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter + Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Category Filter -->
+      <div class="flex flex-wrap gap-3 mb-10 justify-center" id="filter-buttons" data-aos="fade-up">
+        {categories.map((cat) => (
+          <button
+            data-category={cat.id}
+            class={`filter-btn px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${cat.id === 'all' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-600 border-gray-200 hover:border-primary-400 hover:text-primary-600'}`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Course Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="course-grid">
+        {allCourses.map((course, i) => (
+          <div
+            class="course-item h-full"
+            data-category={course.category}
+            data-aos="fade-up"
+            data-aos-delay={Math.min(i * 60, 300)}
+          >
+            <CourseCard {...course} />
+          </div>
+        ))}
+      </div>
+
+      <!-- No results -->
+      <div id="no-results" class="hidden text-center py-20">
+        <div class="text-5xl mb-4">🔍</div>
+        <p class="text-gray-400 text-lg">Tidak ada kelas dalam kategori ini.</p>
+        <button data-category="all" class="filter-btn btn-primary-dark mt-6 py-2.5 px-6">Lihat Semua Kelas</button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll<HTMLElement>('.filter-btn');
+    const courseItems = document.querySelectorAll<HTMLElement>('.course-item');
+    const noResults = document.getElementById('no-results');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category || 'all';
+
+        // Update button styles
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary-600', 'text-white', 'border-primary-600');
+          b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+        });
+        btn.classList.add('bg-primary-600', 'text-white', 'border-primary-600');
+        btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+
+        // Filter items
+        let visible = 0;
+        courseItems.forEach(item => {
+          const match = category === 'all' || item.dataset.category === category;
+          item.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+
+        noResults?.classList.toggle('hidden', visible > 0);
+      });
+    });
+  });
+</script>

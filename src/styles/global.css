@@ -1,0 +1,175 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Styles ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  }
+
+  body {
+    @apply bg-white text-gray-800 antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+}
+
+/* ── Component Utilities ── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-glow-teal hover:shadow-lg hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-white text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-white hover:text-primary-700 active:scale-95;
+  }
+
+  .btn-primary-dark {
+    @apply inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-glow-primary hover:shadow-lg hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center gap-2 border-2 border-primary-600 text-primary-700 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-primary-600 hover:text-white active:scale-95;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-extrabold text-primary-700 leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-500 mt-3 max-w-xl mx-auto;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden;
+  }
+
+  .badge {
+    @apply inline-block text-xs font-extrabold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm;
+  }
+
+  .badge-teal {
+    @apply badge bg-teal-500 text-white;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-600 text-white;
+  }
+
+  .badge-popular {
+    @apply badge bg-gradient-to-r from-orange-500 to-red-500 text-white;
+  }
+
+  .badge-new {
+    @apply badge bg-gradient-to-r from-teal-400 to-cyan-500 text-white;
+  }
+
+  .badge-ebp {
+    @apply badge bg-gradient-to-r from-violet-500 to-purple-600 text-white;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-teal-400 to-accent bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  /* Glowing CTA button */
+  .btn-cta-gradient {
+    @apply inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl transition-all duration-300 text-white;
+    background: linear-gradient(135deg, #0d9488 0%, #1e5f8a 100%);
+    box-shadow: 0 4px 24px rgba(13, 148, 136, 0.4);
+  }
+
+  .btn-cta-gradient:hover {
+    background: linear-gradient(135deg, #0f766e 0%, #1a4f74 100%);
+    box-shadow: 0 8px 32px rgba(13, 148, 136, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── AOS Custom Overrides ── */
+/* Prevent AOS from permanently hiding content if JS fails */
+[data-aos] {
+  pointer-events: none;
+}
+
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* Safety: if AOS JS never fires (SSR / JS disabled), reveal content */
+html:not(.aos-initialized) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ── WhatsApp Pulse ── */
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2.5s ease-in-out infinite;
+}
+
+/* ── Navbar Active State ── */
+.nav-link {
+  @apply relative text-white/80 hover:text-white font-medium transition-colors duration-200;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link.active::after {
+  @apply w-full;
+}
+
+/* ── Hero gradient mesh ── */
+.hero-mesh {
+  background: radial-gradient(ellipse at 70% 30%, rgba(13, 148, 136, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(94, 234, 212, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, #092c44 0%, #1e5f8a 55%, #0d6e66 100%);
+}
+
+/* ── Testimonial card ── */
+.testimonial-card {
+  @apply bg-white rounded-2xl p-6 shadow-card border border-gray-100;
+}

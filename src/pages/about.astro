@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+export const prerender = true;
+
+const team = [
+  {
+    name: 'Ns. Rizki Pratama, S.Kep., M.Kep.',
+    role: 'Founder & Lead Instructor',
+    specialization: 'Keperawatan Medikal Bedah & Kritis',
+    initials: 'RP',
+    image: '/founder.png',
+    bio: 'Perawat klinis dengan pengalaman 10+ tahun di RSUP Dr. Sardjito. Lulus dengan predikat cumlaude dari Universitas Gadjah Mada. Mentor lebih dari 3.000 calon Ners Indonesia.',
+  },
+  {
+    name: 'Ns. Siti Rahmawati, S.Kep., Sp.Kep.Mat.',
+    role: 'Instruktur Senior',
+    specialization: 'Keperawatan Maternitas & Anak',
+    initials: 'SR',
+    bio: 'Spesialis maternitas berpengalaman dengan latar belakang klinis di RSIA. Aktif sebagai reviewer jurnal keperawatan nasional dan internasional.',
+  },
+  {
+    name: 'Ns. Hendri Kurniawan, S.Kep.',
+    role: 'Instruktur',
+    specialization: 'Keperawatan Gawat Darurat & ICU',
+    initials: 'HK',
+    bio: 'Perawat IGD senior dengan sertifikasi BTCLS dan PPGD. Berpengalaman melatih tim medis dalam simulasi gawat darurat di berbagai rumah sakit.',
+  },
+];
+
+const values = [
+  { emoji: '🎯', title: 'Relevan & Aplikatif', desc: 'Materi dirancang langsung dari pengalaman klinis nyata, bukan hanya teori.' },
+  { emoji: '💡', title: 'Inovatif', desc: 'Metode belajar modern dengan video, simulasi kasus, dan kuis interaktif.' },
+  { emoji: '🤝', title: 'Komunitas Supportif', desc: 'Belajar bersama, tumbuh bersama — komunitas perawat yang aktif dan supportif.' },
+  { emoji: '✅', title: 'Berbasis Bukti', desc: 'Semua materi mengacu pada Evidence-Based Practice (EBP) terkini.' },
+];
+---
+
+<BaseLayout
+  title="Tentang Kami - KamusNers"
+  description="Kenali lebih jauh tentang KamusNers — platform kelas online untuk perawat Indonesia. Visi, misi, dan tim instruktur berpengalaman kami."
+>
+  <Navbar slot="navbar" />
+  <Footer slot="footer" />
+  <WhatsAppButton slot="fab" />
+
+  <!-- Page Header -->
+  <section class="bg-primary-900 pt-28 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-900 to-teal-900 opacity-80"></div>
+    <div class="absolute top-10 right-10 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="badge-teal mb-4 inline-block" data-aos="fade-up">👋 Tentang Kami</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6" data-aos="fade-up" data-aos-delay="100">
+        Kami Hadir untuk <span class="gradient-text">Memajukan Keperawatan</span> Indonesia
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+        KamusNers lahir dari keprihatinan terhadap sulitnya akses pendidikan keperawatan berkualitas di Indonesia. Kami percaya setiap perawat berhak mendapatkan ilmu terbaik.
+      </p>
+    </div>
+  </section>
+
+  <!-- Visi & Misi -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <!-- Visual -->
+        <div class="relative" data-aos="fade-right">
+          <div class="bg-gradient-to-br from-primary-700 to-teal-600 rounded-3xl p-10 text-white shadow-glow-primary">
+            <div class="text-6xl mb-6">🏥</div>
+            <blockquote class="text-xl font-semibold leading-relaxed italic">
+              "Setiap perawat Indonesia berhak mendapatkan pendidikan berkelanjutan yang berkualitas, terjangkau, dan relevan dengan praktik klinis nyata."
+            </blockquote>
+            <div class="mt-6 text-white/60 text-sm">— Tim KamusNers</div>
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -bottom-5 -right-5 bg-white rounded-2xl p-4 shadow-card">
+            <div class="text-2xl font-extrabold text-primary-700">2023</div>
+            <div class="text-xs text-gray-500">Tahun Berdiri</div>
+          </div>
+        </div>
+        <!-- Text -->
+        <div data-aos="fade-left">
+          <h2 class="section-title mb-6">Visi & Misi <span class="gradient-text">Kami</span></h2>
+          <div class="space-y-6">
+            <div class="bg-primary-50 rounded-2xl p-6 border-l-4 border-primary-600">
+              <h3 class="font-bold text-primary-800 mb-2">🎯 Visi</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Menjadi platform edukasi keperawatan terdepan di Asia Tenggara yang melahirkan generasi Ners berkualitas internasional.
+              </p>
+            </div>
+            <div class="bg-teal-50 rounded-2xl p-6 border-l-4 border-teal-500">
+              <h3 class="font-bold text-teal-800 mb-2">🚀 Misi</h3>
+              <ul class="text-gray-600 text-sm leading-relaxed space-y-2">
+                <li>• Menyediakan kelas online berkualitas tinggi yang terjangkau</li>
+                <li>• Menghadirkan instruktur klinis berpengalaman sebagai mentor</li>
+                <li>• Membangun komunitas perawat Indonesia yang solid dan supportif</li>
+                <li>• Mengintegrasikan teknologi untuk pengalaman belajar yang optimal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <h2 class="section-title">Nilai-Nilai <span class="gradient-text">KamusNers</span></h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((v, i) => (
+          <div class="bg-white rounded-2xl p-6 shadow-card text-center hover:-translate-y-1 hover:shadow-card-hover transition-all" data-aos="fade-up" data-aos-delay={i * 80}>
+            <div class="text-4xl mb-4">{v.emoji}</div>
+            <h3 class="font-bold text-primary-800 mb-2">{v.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <h2 class="section-title">Tim <span class="gradient-text">Instruktur</span></h2>
+        <p class="section-subtitle">Belajar langsung dari para profesional klinis berpengalaman</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {team.map((person, i) => (
+          <div
+            class="bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all text-center"
+            data-aos="fade-up"
+            data-aos-delay={i * 100}
+          >
+            {(person as any).image ? (
+              <img
+                src={(person as any).image}
+                alt={person.name}
+                class="w-20 h-20 rounded-2xl object-cover mx-auto mb-5 shadow-glow-teal"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-primary-600 flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-5 shadow-glow-teal">
+                {person.initials}
+              </div>
+            )}
+            <h3 class="font-bold text-primary-800 text-lg mb-1">{person.name}</h3>
+            <p class="text-teal-600 text-sm font-semibold mb-1">{person.role}</p>
+            <p class="text-gray-400 text-xs mb-4">{person.specialization}</p>
+            <p class="text-gray-500 text-sm leading-relaxed">{person.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary-900">
+    <div class="max-w-3xl mx-auto px-4 text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-extrabold text-white mb-4">Bergabunglah Bersama Kami</h2>
+      <p class="text-white/60 mb-8">Jadilah bagian dari ribuan perawat yang sudah meningkatkan kompetensinya bersama KamusNers.</p>
+      <a href="/browse" class="btn-primary text-base px-8 py-4">Mulai Belajar Sekarang</a>
+    </div>
+  </section>
+</BaseLayout>
