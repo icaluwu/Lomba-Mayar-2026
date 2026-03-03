@@ -7,11 +7,6 @@
     "regions": [
         "sin1"
     ],
-    "functions": {
-        "dist/server/entry.mjs": {
-            "maxDuration": 10
-        }
-    },
     "headers": [
         {
             "source": "/api/(.*)",
